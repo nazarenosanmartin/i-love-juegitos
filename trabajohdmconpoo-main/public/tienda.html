@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda — ILOVEJUEGUITOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tienda.css">
+<script src="productos.js" defer></script>
+<script src="tienda.js" defer></script>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Principal">
+    <div class="site-banner" aria-label="Ir a inicio">
+      <a href="index.html" class="banner-link" title="Ir a la página principal">
+        <img src="logo.png" alt="GameQuest logo" class="banner-logo" onerror="this.style.display='none'">
+        <span class="banner-text">ILOVEJUEGUITOS</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="btn-nav-ghost">🎮 Test</a>
+      <span id="navUsername" class="shop-username"></span>
+      <button class="shop-cart-btn" id="cartBtn" aria-label="Abrir carrito">
+        🛒 <span>Carrito</span>
+        <span class="shop-cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <main class="shop">
+
+      <header class="shop-hero">
+        <div class="hero-eyebrow">Merchandising oficial</div>
+        <h1 class="shop-title">La tienda</h1>
+        <p class="shop-sub">Ropa, accesorios y cosas para tu setup. Elegí lo que más te guste y lo llevamos a tu casa.</p>
+      </header>
+
+      <section class="shop-toolbar" aria-label="Filtros">
+        <div class="shop-filters" id="filters" role="tablist"></div>
+        <label class="shop-sort">
+          <span>Ordenar</span>
+          <select id="sortSelect">
+            <option value="default">Destacados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name">Nombre (A-Z)</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="shop-grid" id="productGrid" aria-live="polite">
+        <div class="shop-state">Cargando productos...</div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== CARRITO (panel lateral) ===== -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Tu carrito</h2>
+      <button class="drawer-close" id="drawerClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+    <div class="drawer-foot" id="drawerFoot">
+      <div class="drawer-total"><span>Total</span><strong id="drawerTotal">$0</strong></div>
+      <button class="btn-primary drawer-checkout" id="checkoutBtn">
+        Finalizar compra
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="drawer-clear" id="clearBtn">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <!-- ===== CHECKOUT ===== -->
+  <div id="checkoutOverlay" class="modal-overlay" style="display:none;">
+    <div class="modal-box modal-wide">
+      <div id="checkoutForm">
+        <div class="checkout-head">
+          <h2>Finalizar compra</h2>
+          <button class="drawer-close" id="checkoutClose" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <div class="modal-field">
+          <label for="coName">Nombre y apellido</label>
+          <input type="text" id="coName" placeholder="Juan Pérez" autocomplete="name">
+        </div>
+        <div class="modal-field">
+          <label for="coEmail">Email</label>
+          <input type="email" id="coEmail" placeholder="tu@email.com" autocomplete="email">
+        </div>
+        <div class="modal-field">
+          <label for="coAddress">Dirección de envío</label>
+          <input type="text" id="coAddress" placeholder="Calle 123, Ciudad, Provincia, CP" autocomplete="street-address">
+        </div>
+        <div id="checkoutError" class="modal-error"></div>
+        <button class="btn-primary" id="confirmBtn" style="width:100%;justify-content:center;margin-top:1rem;">
+          Confirmar pedido
+        </button>
+        <p class="checkout-note">Este es un pedido de prueba: el pago se coordina luego por email.</p>
+      </div>
+
+      <div id="checkoutDone" class="checkout-done" style="display:none;">
+        <div class="checkout-done-icon">🎉</div>
+        <h2>¡Pedido recibido!</h2>
+        <p id="doneText"></p>
+        <button class="btn-primary" id="doneBtn" style="margin-top:1.5rem;">Seguir mirando</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="shop-toast" id="toast" role="status"></div>
+</body>
+</html>

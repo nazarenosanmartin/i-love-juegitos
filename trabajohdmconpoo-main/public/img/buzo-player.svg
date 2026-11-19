@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(265,65%,38%)"/><stop offset="1" stop-color="hsl(310,70%,18%)"/></linearGradient>
+<radialGradient id="glow" cx=".3" cy=".25" r=".7"><stop offset="0" stop-color="hsl(265,95%,70%)" stop-opacity=".55"/><stop offset="1" stop-color="hsl(265,95%,70%)" stop-opacity="0"/></radialGradient>
+<linearGradient id="brand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8A2EFF"/><stop offset="1" stop-color="#FF007F"/></linearGradient>
+
+</defs>
+<rect width="400" height="300" fill="url(#bg)"/><rect width="400" height="300" fill="url(#glow)"/>
+<g fill="#fff" opacity=".07"><circle cx="40" cy="40" r="3"/><circle cx="360" cy="60" r="3"/><circle cx="330" cy="250" r="3"/><circle cx="60" cy="240" r="3"/><circle cx="200" cy="25" r="2"/></g>
+<ellipse cx="200" cy="262" rx="105" ry="10" fill="#000" opacity=".28"/>
+
+<ellipse cx="200" cy="82" rx="46" ry="30" fill="#4a2a9c"/>
+<path d="M126 92 L170 74 Q200 104 230 74 L274 92 L318 205 L282 214 L262 150 L262 252 L138 252 L138 150 L118 214 L82 205 Z" fill="#7b4be0"/>
+<path d="M170 74 Q200 104 230 74 Q200 120 170 74Z" fill="#2d1a66"/>
+<path d="M188 100 V140 M212 100 V140" stroke="#f4f1ff" stroke-width="4" stroke-linecap="round"/>
+<path d="M156 195 H244 L254 240 H146 Z" fill="#6738c9" stroke="#4a2a9c" stroke-width="3"/>
+<text x="200" y="176" font-family="Arial,Helvetica,sans-serif" font-weight="800" text-anchor="middle" font-size="16" fill="#f4f1ff" letter-spacing="2">PLAYER ONE</text>
+<rect x="82" y="203" width="36" height="12" rx="4" transform="rotate(-9 100 209)" fill="#4a2a9c"/>
+<rect x="282" y="203" width="36" height="12" rx="4" transform="rotate(9 300 209)" fill="#4a2a9c"/>
+
+</svg>

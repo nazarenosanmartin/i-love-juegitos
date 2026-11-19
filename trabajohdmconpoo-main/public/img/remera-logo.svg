@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(285,65%,38%)"/><stop offset="1" stop-color="hsl(330,70%,18%)"/></linearGradient>
+<radialGradient id="glow" cx=".3" cy=".25" r=".7"><stop offset="0" stop-color="hsl(285,95%,70%)" stop-opacity=".55"/><stop offset="1" stop-color="hsl(285,95%,70%)" stop-opacity="0"/></radialGradient>
+<linearGradient id="brand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8A2EFF"/><stop offset="1" stop-color="#FF007F"/></linearGradient>
+
+</defs>
+<rect width="400" height="300" fill="url(#bg)"/><rect width="400" height="300" fill="url(#glow)"/>
+<g fill="#fff" opacity=".07"><circle cx="40" cy="40" r="3"/><circle cx="360" cy="60" r="3"/><circle cx="330" cy="250" r="3"/><circle cx="60" cy="240" r="3"/><circle cx="200" cy="25" r="2"/></g>
+<ellipse cx="200" cy="262" rx="105" ry="10" fill="#000" opacity=".28"/>
+
+<path d="M128 78 L168 62 Q200 92 232 62 L272 78 L312 128 L274 152 L258 132 L258 252 L142 252 L142 132 L126 152 L88 128 Z" fill="#f4f1ff"/>
+<path d="M168 62 Q200 92 232 62 L226 58 Q200 80 174 58 Z" fill="#cfc6ee"/>
+<path d="M142 132 L126 152 L88 128 L128 78 M258 132 L274 152 L312 128 L272 78" fill="none" stroke="#d9d2f2" stroke-width="2"/>
+<text x="200" y="170" font-family="Arial,Helvetica,sans-serif" font-weight="800" text-anchor="middle" font-size="19" fill="url(#brand)">ILOVE</text>
+<text x="200" y="192" font-family="Arial,Helvetica,sans-serif" font-weight="800" text-anchor="middle" font-size="15" fill="url(#brand)">JUEGUITOS</text>
+<g fill="#FF007F"><rect x="188" y="204" width="6" height="6"/><rect x="206" y="204" width="6" height="6"/><rect x="182" y="210" width="36" height="6"/><rect x="188" y="216" width="24" height="6"/><rect x="194" y="222" width="12" height="6"/></g>
+
+</svg>

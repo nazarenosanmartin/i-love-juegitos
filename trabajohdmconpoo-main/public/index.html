@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameQuest — Descubre tu próximo juego</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Principal">
+    <div class="site-banner" aria-label="Ir a inicio">
+      <a href="index.html" class="banner-link" title="Ir a la página principal">
+        <img src="logo.png" alt="GameQuest logo" class="banner-logo" onerror="this.style.display='none'">
+        <span class="banner-text">ILOVEJUEGUITOS</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="tienda.html" class="btn-nav-ghost nav-link">🛍️ Tienda</a>
+      <!-- Auth buttons (se ocultan tras login) -->
+      <div id="navGuest" style="display:flex;gap:0.6rem;align-items:center;">
+        <button class="btn-nav-ghost" onclick="openAuth('login')">Iniciar sesión</button>
+        <button class="btn-nav-solid" onclick="openAuth('register')">Registrarse</button>
+      </div>
+      <!-- User panel (aparece tras login) -->
+      <div id="navUser" style="display:none;gap:0.6rem;align-items:center;">
+        <button class="btn-nav-ghost" onclick="openHistory()">📋 Historial</button>
+        <span id="navUsername" style="font-size:0.85rem;color:var(--cyan);font-weight:600;"></span>
+        <button class="btn-nav-ghost" onclick="logout()">Salir</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MODAL AUTH ===== -->
+  <div id="authOverlay" class="modal-overlay" style="display:none;" onclick="closeAuth(event)">
+    <div class="modal-box">
+      <div class="modal-tabs">
+        <button id="tabLogin"    class="modal-tab active" onclick="switchTab('login')">Iniciar sesión</button>
+        <button id="tabRegister" class="modal-tab"        onclick="switchTab('register')">Registrarse</button>
+      </div>
+
+      <!-- Login -->
+      <div id="formLogin">
+        <div class="modal-field">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="tu@email.com" autocomplete="email">
+        </div>
+        <div class="modal-field">
+          <label>Contraseña</label>
+          <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div id="loginError" class="modal-error"></div>
+        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem;" onclick="doLogin()">
+          Entrar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Register -->
+      <div id="formRegister" style="display:none;">
+        <div class="modal-field">
+          <label>Usuario</label>
+          <input type="text" id="regUser" placeholder="GamerXYZ" autocomplete="username">
+        </div>
+        <div class="modal-field">
+          <label>Email</label>
+          <input type="email" id="regEmail" placeholder="tu@email.com" autocomplete="email">
+        </div>
+        <div class="modal-field">
+          <label>Contraseña</label>
+          <input type="password" id="regPass" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+        </div>
+        <div id="regError" class="modal-error"></div>
+        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem;" onclick="doRegister()">
+          Crear cuenta
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL HISTORIAL ===== -->
+  <div id="historyOverlay" class="modal-overlay" style="display:none;" onclick="closeHistory(event)">
+    <div class="modal-box modal-wide">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.4rem;background:linear-gradient(135deg,var(--title-start),var(--title-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Tu historial de quizzes</h2>
+        <button onclick="closeHistory()" style="background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;line-height:1;">✕</button>
+      </div>
+      <div id="historyList">
+        <div style="text-align:center;color:var(--text-muted);padding:2rem;">Cargando...</div>
+      </div>
+    </div>
+  </div>
+<div class="page">
+
+
+  <!-- ===== LANDING ===== -->
+  <section id="landing">
+    <div class="hero-eyebrow">Recomendaciones inteligentes</div>
+    <h1 class="hero-title">ILOVE</h1>
+    <h1 class="hero-title">JUEGUITOS</h1>
+    <p class="hero-sub">
+      Responde <span class="c">8 preguntas</span> sobre tus gustos y nuestro algoritmo calculará tu
+      <span class="p">compatibilidad exacta</span> con más de 80 videojuegos.
+    </p>
+    <button class="btn-primary" onclick="startQuiz()">
+      Comenzar el test
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">80+</div><div class="stat-label">Videojuegos</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Preguntas</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Personalizado</div></div>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <div class="feature-title">Algoritmo real</div>
+        <div class="feature-desc">Sistema de puntuación dinámico que analiza tus respuestas para calcular compatibilidad exacta.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Perfil de jugador</div>
+        <div class="feature-desc">Descubre tu arquetipo gamer según tus preferencias: desde explorador narrativo hasta competidor hardcore.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Resultados únicos</div>
+        <div class="feature-desc">Cada combinación de respuestas genera resultados distintos. Sin resultados estáticos ni hardcodeados.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="quiz">
+    <div class="quiz-header">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <div class="progress-label">
+        <span id="progressText">Pregunta 1 de 8</span>
+        <span id="progressPct">0%</span>
+      </div>
+    </div>
+
+    <div class="quiz-card" id="quizCard">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ===== LOADING ===== -->
+  <section id="loading">
+    <div class="loading-ring"></div>
+    <div class="loading-text" id="loadingText">Analizando tu perfil de jugador...</div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section id="results">
+    <div class="results-title">Tus recomendaciones</div>
+    <div class="results-sub">Basado en tu perfil, estos son los juegos con mayor afinidad para ti</div>
+    <div class="profile-badge" id="profileBadge">
+      <div class="profile-icon">🎮</div>
+      <div class="profile-info">
+        <span class="profile-label">Tu perfil</span>
+        <span class="profile-name" id="profileName">—</span>
+      </div>
+    </div>
+    <div class="games-grid" id="gamesGrid"></div>
+    <button class="btn-restart" onclick="restart()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+      </svg>
+      Volver a empezar
+    </button>
+  </section>
+
+</div>
+
+</body>
+</html>

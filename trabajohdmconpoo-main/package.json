@@ -1,0 +1,28 @@
+{
+  "name": "gamequest-server",
+  "version": "1.0.0",
+  "description": "Backend para GameQuest con Express + MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.5",
+    "cors": "^2.8.6",
+    "express": "^4.22.2",
+    "mysql2": "^3.22.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanivuegen/trabajo-hdm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juanivuegen/trabajo-hdm/issues"
+  },
+  "homepage": "https://github.com/juanivuegen/trabajo-hdm#readme"
+}
